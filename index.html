@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Agenda de Tareas</title>
+</head>
+<body>
+    
+    <div id="app">
+        
+    <!-- v-model tarea para asociar input con modelo --> 
+        <input v-model="tarea" type="text"  placeholder="Agrega tu tarea">
+        <!-- boton para hacer interaccion -->
+        <button  
+                @click ="agregando_tarea"
+                value="Añadir Tarea">
+              Agregar  </button> 
+        <ul>
+            <!-- directiva v-for-->
+            <li v-for="tarea of tareas">{{tarea}}</li>
+        </ul>
+    </div>
+
+
+    
+    <script>
+        const tarea_inicio = new Vue ({
+          //todos los elementos de app ingresan al elemento de entrada
+            el: "#app",
+
+             //datos 
+            data: {
+
+                tarea:" ",
+                tareas: []
+    
+            },
+            methods: {
+                agregando_tarea(){
+                    this.tareas.push(this.tarea)
+                    this.tarea=""
+                }
+                }
+        })
+    </script>
+
+
+</body>
+</html>
